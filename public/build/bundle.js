@@ -403,7 +403,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (218:5) {#each cat.assignments as ass}
+    // (221:5) {#each cat.assignments as ass}
     function create_each_block_1(ctx) {
     	let tr;
     	let td0;
@@ -446,28 +446,28 @@ var app = (function () {
     			set_style(td0, "text-align", "left");
     			set_style(td0, "width", "25%");
     			attr_dev(td0, "class", td0_class_value = "" + (/*ass*/ ctx[13].name + "name" + " svelte-mt3r1v"));
-    			add_location(td0, file, 219, 7, 5131);
+    			add_location(td0, file, 222, 7, 5377);
     			attr_dev(input0, "class", input0_class_value = "" + (/*cat*/ ctx[10].name + "in" + " svelte-mt3r1v"));
     			input0.value = input0_value_value = /*ass*/ ctx[13].score;
     			attr_dev(input0, "type", "number");
-    			add_location(input0, file, 220, 48, 5257);
+    			add_location(input0, file, 223, 48, 5503);
     			set_style(td1, "text-align", "center");
     			set_style(td1, "width", "25%");
     			attr_dev(td1, "class", "svelte-mt3r1v");
-    			add_location(td1, file, 220, 7, 5216);
+    			add_location(td1, file, 223, 7, 5462);
     			attr_dev(input1, "class", input1_class_value = "" + (/*cat*/ ctx[10].name + "out" + " svelte-mt3r1v"));
     			input1.value = input1_value_value = /*ass*/ ctx[13].outOf;
     			attr_dev(input1, "type", "number");
-    			add_location(input1, file, 221, 48, 5405);
+    			add_location(input1, file, 224, 48, 5651);
     			set_style(td2, "text-align", "center");
     			set_style(td2, "width", "25%");
     			attr_dev(td2, "class", "svelte-mt3r1v");
-    			add_location(td2, file, 221, 7, 5364);
+    			add_location(td2, file, 224, 7, 5610);
     			set_style(td3, "text-align", "right");
     			set_style(td3, "width", "25%");
     			attr_dev(td3, "class", "svelte-mt3r1v");
-    			add_location(td3, file, 222, 7, 5513);
-    			add_location(tr, file, 218, 6, 5119);
+    			add_location(td3, file, 225, 7, 5759);
+    			add_location(tr, file, 221, 6, 5365);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -529,14 +529,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(218:5) {#each cat.assignments as ass}",
+    		source: "(221:5) {#each cat.assignments as ass}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (204:3) {#each categories as cat}
+    // (207:3) {#each categories as cat}
     function create_each_block(ctx) {
     	let table;
     	let tr0;
@@ -622,55 +622,55 @@ var app = (function () {
     			br0 = element("br");
     			br1 = element("br");
     			attr_dev(td0, "class", "svelte-mt3r1v");
-    			add_location(td0, file, 206, 6, 4494);
+    			add_location(td0, file, 209, 6, 4740);
     			set_style(td1, "text-align", "right");
     			set_style(td1, "font-weight", "bold");
     			set_style(td1, "width", "25%");
     			attr_dev(td1, "class", "svelte-mt3r1v");
-    			add_location(td1, file, 207, 6, 4510);
+    			add_location(td1, file, 210, 6, 4756);
     			attr_dev(input, "class", "inh svelte-mt3r1v");
     			input.value = input_value_value = /*cat*/ ctx[10].weight * 100;
     			attr_dev(input, "type", "number");
-    			add_location(input, file, 208, 45, 4629);
+    			add_location(input, file, 211, 45, 4875);
     			set_style(td2, "text-align", "left");
     			set_style(td2, "width", "25%");
     			attr_dev(td2, "class", "svelte-mt3r1v");
-    			add_location(td2, file, 208, 6, 4590);
+    			add_location(td2, file, 211, 6, 4836);
     			attr_dev(td3, "class", "svelte-mt3r1v");
-    			add_location(td3, file, 209, 6, 4727);
+    			add_location(td3, file, 212, 6, 4973);
     			set_style(tr0, "margin-bottom", "0.5px");
-    			add_location(tr0, file, 205, 5, 4454);
+    			add_location(tr0, file, 208, 5, 4700);
     			set_style(td4, "text-align", "left");
     			set_style(td4, "font-weight", "bold");
     			set_style(td4, "width", "25%");
     			attr_dev(td4, "class", "svelte-mt3r1v");
-    			add_location(td4, file, 212, 6, 4764);
+    			add_location(td4, file, 215, 6, 5010);
     			set_style(td5, "text-align", "center");
     			set_style(td5, "font-weight", "bold");
     			set_style(td5, "width", "25%");
     			attr_dev(td5, "class", "svelte-mt3r1v");
-    			add_location(td5, file, 213, 6, 4843);
+    			add_location(td5, file, 216, 6, 5089);
     			set_style(td6, "text-align", "center");
     			set_style(td6, "font-weight", "bold");
     			set_style(td6, "width", "25%");
     			attr_dev(td6, "class", "svelte-mt3r1v");
-    			add_location(td6, file, 214, 6, 4920);
+    			add_location(td6, file, 217, 6, 5166);
     			set_style(td7, "text-align", "right");
     			set_style(td7, "font-weight", "bold");
     			set_style(td7, "width", "25%");
     			attr_dev(td7, "class", "svelte-mt3r1v");
-    			add_location(td7, file, 215, 6, 4997);
-    			add_location(tr1, file, 211, 5, 4753);
+    			add_location(td7, file, 218, 6, 5243);
+    			add_location(tr1, file, 214, 5, 4999);
     			attr_dev(button, "class", button_class_value = "" + (/*cat*/ ctx[10].name + "button" + " svelte-mt3r1v"));
-    			add_location(button, file, 226, 10, 5657);
+    			add_location(button, file, 229, 10, 5903);
     			attr_dev(td8, "class", "svelte-mt3r1v");
-    			add_location(td8, file, 226, 6, 5653);
-    			add_location(tr2, file, 225, 5, 5642);
+    			add_location(td8, file, 229, 6, 5899);
+    			add_location(tr2, file, 228, 5, 5888);
     			set_style(table, "width", "95%");
     			attr_dev(table, "id", table_id_value = "" + (/*cat*/ ctx[10].name + "table"));
-    			add_location(table, file, 204, 4, 4397);
-    			add_location(br0, file, 229, 4, 5782);
-    			add_location(br1, file, 229, 8, 5786);
+    			add_location(table, file, 207, 4, 4643);
+    			add_location(br0, file, 232, 4, 6028);
+    			add_location(br1, file, 232, 8, 6032);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, table, anchor);
@@ -781,7 +781,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(204:3) {#each categories as cat}",
+    		source: "(207:3) {#each categories as cat}",
     		ctx
     	});
 
@@ -849,23 +849,26 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(h1, file, 192, 3, 4116);
-    			add_location(div0, file, 191, 2, 4107);
+    			add_location(h1, file, 195, 3, 4256);
+    			add_location(div0, file, 194, 2, 4247);
     			attr_dev(textarea, "type", "text");
     			attr_dev(textarea, "rows", "8");
     			textarea.value = /*rawtext*/ ctx[0];
     			attr_dev(textarea, "id", "entry");
+    			attr_dev(textarea, "placeholder", "Copy and paste your assigments from PowerSchool!");
     			attr_dev(textarea, "class", "svelte-mt3r1v");
-    			add_location(textarea, file, 195, 3, 4161);
-    			add_location(br0, file, 196, 3, 4234);
-    			add_location(button, file, 197, 3, 4242);
-    			add_location(br1, file, 198, 3, 4283);
-    			add_location(div1, file, 194, 2, 4152);
-    			add_location(h2, file, 202, 3, 4316);
+    			add_location(textarea, file, 198, 3, 4301);
+    			add_location(br0, file, 199, 3, 4437);
+    			add_location(button, file, 200, 3, 4445);
+    			add_location(br1, file, 201, 3, 4486);
+    			add_location(div1, file, 197, 2, 4292);
+    			set_style(h2, "visibility", "hidden");
+    			attr_dev(h2, "id", "finalgrade");
+    			add_location(h2, file, 205, 3, 4519);
     			attr_dev(div2, "id", "t");
-    			add_location(div2, file, 201, 2, 4300);
-    			add_location(center, file, 190, 1, 4096);
-    			add_location(main, file, 189, 0, 4088);
+    			add_location(div2, file, 204, 2, 4503);
+    			add_location(center, file, 193, 1, 4236);
+    			add_location(main, file, 192, 0, 4228);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1037,11 +1040,13 @@ var app = (function () {
     			}
     		});
 
+    		document.getElementById("finalgrade").style.visibility = "visible";
     		calcGrade();
     	};
 
     	function calcGrade() {
     		let tempGrade = 0;
+    		let totalPercent = 0;
 
     		categories.forEach(cat => {
     			let points = 0;
@@ -1053,9 +1058,10 @@ var app = (function () {
     			});
 
     			tempGrade += points / total * cat.weight;
+    			totalPercent += cat.weight;
     		});
 
-    		$$invalidate(2, grade = tempGrade);
+    		$$invalidate(2, grade = tempGrade / totalPercent);
     	}
 
     	function updateGrade() {

@@ -64,6 +64,7 @@
 				}
 			}
 		});
+		document.getElementById("finalgrade").style.visibility = "visible";
 		calcGrade();
 	}
 
@@ -97,6 +98,7 @@
 	function calcGrade()
 	{
 		let tempGrade = 0;
+		let totalPercent = 0;
 		categories.forEach(cat => {
 			let points = 0;
 			let total = 0;
@@ -106,8 +108,9 @@
 				total += parseFloat(ass.outOf);
 			});
 			tempGrade += (points/total) * cat.weight;
+			totalPercent += cat.weight;
 		});
-		grade = tempGrade;
+		grade = tempGrade / totalPercent;
 	}
 
 	function updateGrade()
@@ -193,14 +196,14 @@
 			<h1>Grade Perturber</h1>
 		</div>
 		<div>
-			<textarea type="text" rows="8" value={rawtext} id="entry"></textarea>
+			<textarea type="text" rows="8" value={rawtext} id="entry" placeholder="Copy and paste your assigments from PowerSchool!"></textarea>
 			<br>
 			<button on:click={load}>load</button>
 			<br>
 		</div>
 
 		<div id="t">
-			<h2>Grade: {((grade * 10000) >> 0) / 100}%</h2>
+			<h2 style="visibility:hidden;" id="finalgrade">Grade: {((grade * 10000) >> 0) / 100}%</h2>
 			{#each categories as cat}
 				<table style = "width: 95%" id = "{cat.name}table">
 					<tr style="margin-bottom:0.5px"> 
