@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <link rel="icon" href="icon.png">
+
+    <title>
+      Grade Fiddle
+    </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154027590-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-154027590-1');
+  </script>
+
+  </head>
+  <body>
+    <div id="title">
+      <h1>
+        <span style="color: #1Ba1A5">
+          grade
+        </span>
+        <span style="color: #036468">
+          fiddle
+        <span>
+        <span style="color: black; font-size: 10px;">
+          beta
+        </span>
+      </h1>
+      <div id="gradediv">
+        <h1 id="grade">
+
+        </h1>
+      </div>
+    </div>
+    <div class="tip tip-gray">
+      <h2>
+        Welcome To Grade Fiddle!
+      </h2>
+      <p>
+         Copy and paste your PowerSchool class assignments in the area below
+         <br><br>
+         Keep in mind this will only work for classes that use category grading (math, english, most science)
+      </p>
+      <br>
+      <div class="outer">
+        <textarea type="text" onfocus="this.select();" rows="8" id="entry"></textarea>
+      </div>
+      <button id='update' onclick="read();">
+        Update!
+      </button>
+      <br><br>
+    </div>
+    <div class="tip tip-blue" id="weightnotice" style="display:none;">
+      <h3>
+        Update Weights
+      </h3>
+      <p>
+         Category weights aren't accessible in PowerSchool, so make sure to enter them manually below
+      </p>
+      <br>
+    </div>
+    <div id="t">
+
+    </div>
+  </body>
+  <script src="patrickclasses.js"></script>
+  <script src="patrickdrawer.js"></script>
+  <script src="patricknewassignment.js"></script>
+  <script src="patrickupdater.js"></script>
+  <script src="patrickreader.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <!--Using JQuery-->
+</html>
