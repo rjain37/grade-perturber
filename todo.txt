@@ -1,4 +1,2 @@
 option to remove assignments
-percentages should be dynamic
-add category percentages
 styling

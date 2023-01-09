@@ -3,7 +3,10 @@
 	let categories = [];
 	let grade = 0;
 	let b = document.getElementById('t');
+	let temp;
+	$: grades = false;
 
+	const returnNada = () => '';
 	const load = () => 
 	{
 		rawtext = document.getElementById("entry").value;
@@ -29,7 +32,7 @@
 		{
 			linestext.shift();
 		}
-		linestext.forEach(linetext => lines.push(new Line(linetext)));
+		linestext.forEach(linetext => lines = [...lines, new Line(linetext)]);
 
 		// console.log(lines);
 		categories = [];
@@ -40,8 +43,8 @@
 			{
 				let temparr = []
 				var newc = new Category(ass.category, 0.2, temparr);
-				cats.push(ass.category);
-				categories.push(newc);
+				cats = [...cats, ass.category];
+				categories = [...categories, newc];
 			}
 		});
 
@@ -49,7 +52,6 @@
 
 		categories.forEach(tempcat => tempcat.weight = Math.floor(per*100)/100);
 
-		// console.log(categories);
 		lines.forEach(ass => 
 		{
 			if (ass.score == "--")
@@ -60,12 +62,13 @@
 			{
 				if (categories[i].name == ass.category)
 				{
-					categories[i].assignments.push(ass);
+					categories[i].assignments = [...categories[i].assignments, ass];
 				}
 			}
 		});
 		document.getElementById("finalgrade").style.visibility = "visible";
 		calcGrade();
+		grades = true;
 	}
 
 	function Line(text, name, score, outOf, category)
@@ -75,6 +78,7 @@
 			this.name = name;
 			this.score = score;
 			this.outOf = outOf;
+			this.percent = ((parseFloat(this.score) / parseFloat(this.outOf) * 10000) >> 0) / 100;
 			this.category = category;
 		}
 		else
@@ -85,6 +89,7 @@
 			this.gradetext = this.splitted[10];
 			this.score = this.gradetext.substr(0, this.gradetext.indexOf('/'));
 			this.outOf = this.gradetext.substr(this.gradetext.indexOf('/')+1, this.gradetext.length);
+			this.percent = ((parseFloat(this.score) / parseFloat(this.outOf) * 10000) >> 0) / 100;
 		}
 	}
 
@@ -121,6 +126,7 @@
 			temp++;
 		});
 		calcGrade();
+		updateCategoryGrades();
 	}
 
 	function updateAssignments()
@@ -130,11 +136,13 @@
 			cat.assignments.forEach(ass => {
 				ass.score = document.getElementsByClassName(cat.name + "in")[temp].value;
 				ass.outOf = document.getElementsByClassName(cat.name + "out")[temp].value;
+				ass.percent = ((parseFloat(ass.score) / parseFloat(ass.outOf) * 10000) >> 0) / 100;
+				document.getElementsByClassName(cat.name + "percent")[temp].innerHTML = "" + ass.percent + "%";
 				temp++;
 			});
-			// console.log(cat.assignments);
 		});
 		calcGrade();
+		updateCategoryGrades();
 	}
 
 	function addAssignment(cat)
@@ -144,7 +152,7 @@
 		{
 			if(categories[i].name == cat)
 			{
-				categories[i].assignments.push(new Line("", "New Assignment " + assnum, 0, 100, cat));
+				categories[i].assignments = [...categories[i].assignments, new Line("", "New Assignment " + assnum, 0, 100, cat)];
 			}
 		}
 		let table = document.getElementById(cat + "table");
@@ -155,7 +163,6 @@
 		clonedRow.cells[1].childNodes[0].addEventListener("change", updateAssignments);
 		clonedRow.cells[2].childNodes[0].addEventListener("change", updateAssignments);
 
-		// console.log(clonedRow.cells[1].childNodes[0])
 		table.insertBefore(clonedRow, lastRow);
 		updateAssignments();
 	}
@@ -167,6 +174,20 @@
 			temp += cat.assignments.length;
 		});
 		return temp;
+	}
+
+	function updateCategoryGrades()
+	{
+		for(let i = 0; i < categories.length; i++)
+		{
+			let points = 0;
+			let total = 0;
+			categories[i].assignments.forEach(ass => {
+				points += parseFloat(ass.score);
+				total += parseFloat(ass.outOf);
+			});
+			document.getElementsByClassName(categories[i].name + "grade")[0].innerHTML = "<strong>" + (Math.round((points/total) * 10000) / 100) + "%</strong>";
+		}
 	}
 </script>
 
@@ -184,9 +205,15 @@
 		min-width: none;
 		width: 50px;
 	}
+
 	td
 	{
 		padding: 1px;
+	}
+
+	main
+	{
+		font-size: 14px;
 	}
 </style>
 
@@ -198,19 +225,26 @@
 		<div>
 			<textarea type="text" rows="8" value={rawtext} id="entry" placeholder="Copy and paste your assigments from PowerSchool!"></textarea>
 			<br>
-			<button on:click={load}>load</button>
+			<table style = "width: 90%">
+				<tr style="margin-bottom:0.5px"> 
+					<td></td>
+					<td style="text-align:right; font-weight:bold; width:25%"><button on:click={load}>load</button></td>
+					<td style="width:25%"></td>
+					<td></td>
+				</tr>
+			</table>
 			<br>
 		</div>
 
 		<div id="t">
 			<h2 style="visibility:hidden;" id="finalgrade">Grade: {((grade * 10000) >> 0) / 100}%</h2>
 			{#each categories as cat}
-				<table style = "width: 95%" id = "{cat.name}table">
+				<table style = "width: 90%" id = "{cat.name}table">
 					<tr style="margin-bottom:0.5px"> 
 						<td></td>
 						<td style="text-align:right; font-weight:bold; width:25%">{cat.name}</td>
 						<td style="text-align:left; width:25%"><input class = "inh" value = {cat.weight*100} type = "number" on:change={updateGrade}></td>
-						<td></td>
+						<td style="text-align:right;" class="{cat.name}grade"></td>
 					</tr>
 					<tr>
 						<td style="text-align:left; font-weight:bold; width:25%">Assignment</td>
@@ -223,16 +257,18 @@
 							<td style="text-align:left; width:25%" class="{ass.name}name">{ass.name}</td>
 							<td style="text-align:center; width:25%"><input class="{cat.name}in" value = {ass.score} type = "number" on:change={updateAssignments}></td>
 							<td style="text-align:center; width:25%"><input class="{cat.name}out" value = {ass.outOf} type = "number" on:change={updateAssignments}></td>
-							<td style="text-align:right; width:25%">{(((ass.score / ass.outOf * 100) * 100) >> 0) / 100}%</td>
+							<td style="text-align:right; width:25%" class="{cat.name}percent">{ass.percent}%</td>
 						</tr>
 					{/each}
 					<tr>
 						<td><button class="{cat.name}button" on:click={addAssignment(cat.name)}>New Assignment</button></td>
 					</tr>
 				</table>
-				<br><br>
+				<br>
 			{/each}
+			{#if grades}
+				{returnNada(updateCategoryGrades())}
+			{/if}
 		</div>
-
 	</center>
 </main>
