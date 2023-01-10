@@ -158,12 +158,11 @@
 		let table = document.getElementById(cat + "table");
 		let lastRow = table.rows[ table.rows.length - 1 ];
 		let clonedRow = table.rows[ table.rows.length - 2 ].cloneNode(true);
-		clonedRow.cells[0].innerHTML = "New Assignment " + assnum;
 		clonedRow.cells[0].innerHTML = "<input type='text' value='New Assignment " + assnum + "'>";
 		clonedRow.cells[1].childNodes[0].addEventListener("change", updateAssignments);
 		clonedRow.cells[2].childNodes[0].addEventListener("change", updateAssignments);
 
-		table.insertBefore(clonedRow, lastRow);
+		// table.insertBefore(clonedRow, lastRow);
 		updateAssignments();
 	}
 
@@ -254,7 +253,7 @@
 					</tr>
 					{#each cat.assignments as ass}
 						<tr>
-							<td style="text-align:left; width:25%" class="{ass.name}name">{ass.name}</td>
+							<td style="text-align:left; width:25%" class="{ass.name}name"><input value = {ass.name} type="text"></td>
 							<td style="text-align:center; width:25%"><input class="{cat.name}in" value = {ass.score} type = "number" on:change={updateAssignments}></td>
 							<td style="text-align:center; width:25%"><input class="{cat.name}out" value = {ass.outOf} type = "number" on:change={updateAssignments}></td>
 							<td style="text-align:right; width:25%" class="{cat.name}percent">{ass.percent}%</td>

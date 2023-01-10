@@ -403,28 +403,28 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (255:5) {#each cat.assignments as ass}
+    // (254:5) {#each cat.assignments as ass}
     function create_each_block_1(ctx) {
     	let tr;
     	let td0;
-    	let t0_value = /*ass*/ ctx[17].name + "";
-    	let t0;
-    	let td0_class_value;
-    	let t1;
-    	let td1;
     	let input0;
-    	let input0_class_value;
     	let input0_value_value;
-    	let t2;
-    	let td2;
+    	let td0_class_value;
+    	let t0;
+    	let td1;
     	let input1;
     	let input1_class_value;
     	let input1_value_value;
-    	let t3;
+    	let t1;
+    	let td2;
+    	let input2;
+    	let input2_class_value;
+    	let input2_value_value;
+    	let t2;
     	let td3;
-    	let t4_value = /*ass*/ ctx[17].percent + "";
+    	let t3_value = /*ass*/ ctx[17].percent + "";
+    	let t3;
     	let t4;
-    	let t5;
     	let td3_class_value;
     	let mounted;
     	let dispose;
@@ -433,91 +433,96 @@ var app = (function () {
     		c: function create() {
     			tr = element("tr");
     			td0 = element("td");
-    			t0 = text(t0_value);
-    			t1 = space();
-    			td1 = element("td");
     			input0 = element("input");
-    			t2 = space();
-    			td2 = element("td");
+    			t0 = space();
+    			td1 = element("td");
     			input1 = element("input");
-    			t3 = space();
+    			t1 = space();
+    			td2 = element("td");
+    			input2 = element("input");
+    			t2 = space();
     			td3 = element("td");
-    			t4 = text(t4_value);
-    			t5 = text("%");
+    			t3 = text(t3_value);
+    			t4 = text("%");
+    			input0.value = input0_value_value = /*ass*/ ctx[17].name;
+    			attr_dev(input0, "type", "text");
+    			add_location(input0, file, 255, 69, 6557);
     			set_style(td0, "text-align", "left");
     			set_style(td0, "width", "25%");
     			attr_dev(td0, "class", td0_class_value = "" + (/*ass*/ ctx[17].name + "name" + " svelte-3tpyoy"));
-    			add_location(td0, file, 256, 7, 6553);
-    			attr_dev(input0, "class", input0_class_value = "" + (/*cat*/ ctx[14].name + "in" + " svelte-3tpyoy"));
-    			input0.value = input0_value_value = /*ass*/ ctx[17].score;
-    			attr_dev(input0, "type", "number");
-    			add_location(input0, file, 257, 48, 6679);
+    			add_location(td0, file, 255, 7, 6495);
+    			attr_dev(input1, "class", input1_class_value = "" + (/*cat*/ ctx[14].name + "in" + " svelte-3tpyoy"));
+    			input1.value = input1_value_value = /*ass*/ ctx[17].score;
+    			attr_dev(input1, "type", "number");
+    			add_location(input1, file, 256, 48, 6649);
     			set_style(td1, "text-align", "center");
     			set_style(td1, "width", "25%");
     			attr_dev(td1, "class", "svelte-3tpyoy");
-    			add_location(td1, file, 257, 7, 6638);
-    			attr_dev(input1, "class", input1_class_value = "" + (/*cat*/ ctx[14].name + "out" + " svelte-3tpyoy"));
-    			input1.value = input1_value_value = /*ass*/ ctx[17].outOf;
-    			attr_dev(input1, "type", "number");
-    			add_location(input1, file, 258, 48, 6827);
+    			add_location(td1, file, 256, 7, 6608);
+    			attr_dev(input2, "class", input2_class_value = "" + (/*cat*/ ctx[14].name + "out" + " svelte-3tpyoy"));
+    			input2.value = input2_value_value = /*ass*/ ctx[17].outOf;
+    			attr_dev(input2, "type", "number");
+    			add_location(input2, file, 257, 48, 6797);
     			set_style(td2, "text-align", "center");
     			set_style(td2, "width", "25%");
     			attr_dev(td2, "class", "svelte-3tpyoy");
-    			add_location(td2, file, 258, 7, 6786);
+    			add_location(td2, file, 257, 7, 6756);
     			set_style(td3, "text-align", "right");
     			set_style(td3, "width", "25%");
     			attr_dev(td3, "class", td3_class_value = "" + (/*cat*/ ctx[14].name + "percent" + " svelte-3tpyoy"));
-    			add_location(td3, file, 259, 7, 6935);
-    			add_location(tr, file, 255, 6, 6541);
+    			add_location(td3, file, 258, 7, 6905);
+    			add_location(tr, file, 254, 6, 6483);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
     			append_dev(tr, td0);
-    			append_dev(td0, t0);
-    			append_dev(tr, t1);
+    			append_dev(td0, input0);
+    			append_dev(tr, t0);
     			append_dev(tr, td1);
-    			append_dev(td1, input0);
-    			append_dev(tr, t2);
+    			append_dev(td1, input1);
+    			append_dev(tr, t1);
     			append_dev(tr, td2);
-    			append_dev(td2, input1);
-    			append_dev(tr, t3);
+    			append_dev(td2, input2);
+    			append_dev(tr, t2);
     			append_dev(tr, td3);
+    			append_dev(td3, t3);
     			append_dev(td3, t4);
-    			append_dev(td3, t5);
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input0, "change", /*updateAssignments*/ ctx[7], false, false, false),
-    					listen_dev(input1, "change", /*updateAssignments*/ ctx[7], false, false, false)
+    					listen_dev(input1, "change", /*updateAssignments*/ ctx[7], false, false, false),
+    					listen_dev(input2, "change", /*updateAssignments*/ ctx[7], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*categories*/ 2 && t0_value !== (t0_value = /*ass*/ ctx[17].name + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*categories*/ 2 && input0_value_value !== (input0_value_value = /*ass*/ ctx[17].name) && input0.value !== input0_value_value) {
+    				prop_dev(input0, "value", input0_value_value);
+    			}
 
     			if (dirty & /*categories*/ 2 && td0_class_value !== (td0_class_value = "" + (/*ass*/ ctx[17].name + "name" + " svelte-3tpyoy"))) {
     				attr_dev(td0, "class", td0_class_value);
     			}
 
-    			if (dirty & /*categories*/ 2 && input0_class_value !== (input0_class_value = "" + (/*cat*/ ctx[14].name + "in" + " svelte-3tpyoy"))) {
-    				attr_dev(input0, "class", input0_class_value);
-    			}
-
-    			if (dirty & /*categories*/ 2 && input0_value_value !== (input0_value_value = /*ass*/ ctx[17].score) && input0.value !== input0_value_value) {
-    				prop_dev(input0, "value", input0_value_value);
-    			}
-
-    			if (dirty & /*categories*/ 2 && input1_class_value !== (input1_class_value = "" + (/*cat*/ ctx[14].name + "out" + " svelte-3tpyoy"))) {
+    			if (dirty & /*categories*/ 2 && input1_class_value !== (input1_class_value = "" + (/*cat*/ ctx[14].name + "in" + " svelte-3tpyoy"))) {
     				attr_dev(input1, "class", input1_class_value);
     			}
 
-    			if (dirty & /*categories*/ 2 && input1_value_value !== (input1_value_value = /*ass*/ ctx[17].outOf) && input1.value !== input1_value_value) {
+    			if (dirty & /*categories*/ 2 && input1_value_value !== (input1_value_value = /*ass*/ ctx[17].score) && input1.value !== input1_value_value) {
     				prop_dev(input1, "value", input1_value_value);
     			}
 
-    			if (dirty & /*categories*/ 2 && t4_value !== (t4_value = /*ass*/ ctx[17].percent + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*categories*/ 2 && input2_class_value !== (input2_class_value = "" + (/*cat*/ ctx[14].name + "out" + " svelte-3tpyoy"))) {
+    				attr_dev(input2, "class", input2_class_value);
+    			}
+
+    			if (dirty & /*categories*/ 2 && input2_value_value !== (input2_value_value = /*ass*/ ctx[17].outOf) && input2.value !== input2_value_value) {
+    				prop_dev(input2, "value", input2_value_value);
+    			}
+
+    			if (dirty & /*categories*/ 2 && t3_value !== (t3_value = /*ass*/ ctx[17].percent + "")) set_data_dev(t3, t3_value);
 
     			if (dirty & /*categories*/ 2 && td3_class_value !== (td3_class_value = "" + (/*cat*/ ctx[14].name + "percent" + " svelte-3tpyoy"))) {
     				attr_dev(td3, "class", td3_class_value);
@@ -534,14 +539,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(255:5) {#each cat.assignments as ass}",
+    		source: "(254:5) {#each cat.assignments as ass}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (241:3) {#each categories as cat}
+    // (240:3) {#each categories as cat}
     function create_each_block(ctx) {
     	let table;
     	let tr0;
@@ -626,55 +631,55 @@ var app = (function () {
     			t15 = space();
     			br = element("br");
     			attr_dev(td0, "class", "svelte-3tpyoy");
-    			add_location(td0, file, 243, 6, 5866);
+    			add_location(td0, file, 242, 6, 5808);
     			set_style(td1, "text-align", "right");
     			set_style(td1, "font-weight", "bold");
     			set_style(td1, "width", "25%");
     			attr_dev(td1, "class", "svelte-3tpyoy");
-    			add_location(td1, file, 244, 6, 5882);
+    			add_location(td1, file, 243, 6, 5824);
     			attr_dev(input, "class", "inh svelte-3tpyoy");
     			input.value = input_value_value = /*cat*/ ctx[14].weight * 100;
     			attr_dev(input, "type", "number");
-    			add_location(input, file, 245, 45, 6001);
+    			add_location(input, file, 244, 45, 5943);
     			set_style(td2, "text-align", "left");
     			set_style(td2, "width", "25%");
     			attr_dev(td2, "class", "svelte-3tpyoy");
-    			add_location(td2, file, 245, 6, 5962);
+    			add_location(td2, file, 244, 6, 5904);
     			set_style(td3, "text-align", "right");
     			attr_dev(td3, "class", td3_class_value = "" + (/*cat*/ ctx[14].name + "grade" + " svelte-3tpyoy"));
-    			add_location(td3, file, 246, 6, 6099);
+    			add_location(td3, file, 245, 6, 6041);
     			set_style(tr0, "margin-bottom", "0.5px");
-    			add_location(tr0, file, 242, 5, 5826);
+    			add_location(tr0, file, 241, 5, 5768);
     			set_style(td4, "text-align", "left");
     			set_style(td4, "font-weight", "bold");
     			set_style(td4, "width", "25%");
     			attr_dev(td4, "class", "svelte-3tpyoy");
-    			add_location(td4, file, 249, 6, 6186);
+    			add_location(td4, file, 248, 6, 6128);
     			set_style(td5, "text-align", "center");
     			set_style(td5, "font-weight", "bold");
     			set_style(td5, "width", "25%");
     			attr_dev(td5, "class", "svelte-3tpyoy");
-    			add_location(td5, file, 250, 6, 6265);
+    			add_location(td5, file, 249, 6, 6207);
     			set_style(td6, "text-align", "center");
     			set_style(td6, "font-weight", "bold");
     			set_style(td6, "width", "25%");
     			attr_dev(td6, "class", "svelte-3tpyoy");
-    			add_location(td6, file, 251, 6, 6342);
+    			add_location(td6, file, 250, 6, 6284);
     			set_style(td7, "text-align", "right");
     			set_style(td7, "font-weight", "bold");
     			set_style(td7, "width", "25%");
     			attr_dev(td7, "class", "svelte-3tpyoy");
-    			add_location(td7, file, 252, 6, 6419);
-    			add_location(tr1, file, 248, 5, 6175);
+    			add_location(td7, file, 251, 6, 6361);
+    			add_location(tr1, file, 247, 5, 6117);
     			attr_dev(button, "class", button_class_value = "" + (/*cat*/ ctx[14].name + "button" + " svelte-3tpyoy"));
-    			add_location(button, file, 263, 10, 7066);
+    			add_location(button, file, 262, 10, 7036);
     			attr_dev(td8, "class", "svelte-3tpyoy");
-    			add_location(td8, file, 263, 6, 7062);
-    			add_location(tr2, file, 262, 5, 7051);
+    			add_location(td8, file, 262, 6, 7032);
+    			add_location(tr2, file, 261, 5, 7021);
     			set_style(table, "width", "90%");
     			attr_dev(table, "id", table_id_value = "" + (/*cat*/ ctx[14].name + "table"));
-    			add_location(table, file, 241, 4, 5769);
-    			add_location(br, file, 266, 4, 7191);
+    			add_location(table, file, 240, 4, 5711);
+    			add_location(br, file, 265, 4, 7161);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, table, anchor);
@@ -787,14 +792,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(241:3) {#each categories as cat}",
+    		source: "(240:3) {#each categories as cat}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (269:3) {#if grades}
+    // (268:3) {#if grades}
     function create_if_block(ctx) {
     	let t_value = /*returnNada*/ ctx[4](/*updateCategoryGrades*/ ctx[9]()) + "";
     	let t;
@@ -816,7 +821,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(269:3) {#if grades}",
+    		source: "(268:3) {#if grades}",
     		ctx
     	});
 
@@ -907,43 +912,43 @@ var app = (function () {
 
     			t14 = space();
     			if (if_block) if_block.c();
-    			add_location(h1, file, 222, 3, 5162);
-    			add_location(div0, file, 221, 2, 5153);
+    			add_location(h1, file, 221, 3, 5104);
+    			add_location(div0, file, 220, 2, 5095);
     			attr_dev(textarea, "type", "text");
     			attr_dev(textarea, "rows", "8");
     			textarea.value = /*rawtext*/ ctx[0];
     			attr_dev(textarea, "id", "entry");
     			attr_dev(textarea, "placeholder", "Copy and paste your assigments from PowerSchool!");
     			attr_dev(textarea, "class", "svelte-3tpyoy");
-    			add_location(textarea, file, 225, 3, 5207);
-    			add_location(br0, file, 226, 3, 5343);
+    			add_location(textarea, file, 224, 3, 5149);
+    			add_location(br0, file, 225, 3, 5285);
     			attr_dev(td0, "class", "svelte-3tpyoy");
-    			add_location(td0, file, 229, 5, 5423);
-    			add_location(button, file, 230, 63, 5496);
+    			add_location(td0, file, 228, 5, 5365);
+    			add_location(button, file, 229, 63, 5438);
     			set_style(td1, "text-align", "right");
     			set_style(td1, "font-weight", "bold");
     			set_style(td1, "width", "25%");
     			attr_dev(td1, "class", "svelte-3tpyoy");
-    			add_location(td1, file, 230, 5, 5438);
+    			add_location(td1, file, 229, 5, 5380);
     			set_style(td2, "width", "25%");
     			attr_dev(td2, "class", "svelte-3tpyoy");
-    			add_location(td2, file, 231, 5, 5544);
+    			add_location(td2, file, 230, 5, 5486);
     			attr_dev(td3, "class", "svelte-3tpyoy");
-    			add_location(td3, file, 232, 5, 5577);
+    			add_location(td3, file, 231, 5, 5519);
     			set_style(tr, "margin-bottom", "0.5px");
-    			add_location(tr, file, 228, 4, 5384);
+    			add_location(tr, file, 227, 4, 5326);
     			set_style(table, "width", "90%");
-    			add_location(table, file, 227, 3, 5351);
-    			add_location(br1, file, 235, 3, 5612);
-    			add_location(div1, file, 224, 2, 5198);
+    			add_location(table, file, 226, 3, 5293);
+    			add_location(br1, file, 234, 3, 5554);
+    			add_location(div1, file, 223, 2, 5140);
     			set_style(h2, "visibility", "hidden");
     			attr_dev(h2, "id", "finalgrade");
-    			add_location(h2, file, 239, 3, 5645);
+    			add_location(h2, file, 238, 3, 5587);
     			attr_dev(div2, "id", "t");
-    			add_location(div2, file, 238, 2, 5629);
-    			add_location(center, file, 220, 1, 5142);
+    			add_location(div2, file, 237, 2, 5571);
+    			add_location(center, file, 219, 1, 5084);
     			attr_dev(main, "class", "svelte-3tpyoy");
-    			add_location(main, file, 219, 0, 5134);
+    			add_location(main, file, 218, 0, 5076);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1216,13 +1221,13 @@ var app = (function () {
     		}
 
     		let table = document.getElementById(cat + "table");
-    		let lastRow = table.rows[table.rows.length - 1];
+    		table.rows[table.rows.length - 1];
     		let clonedRow = table.rows[table.rows.length - 2].cloneNode(true);
-    		clonedRow.cells[0].innerHTML = "New Assignment " + assnum;
     		clonedRow.cells[0].innerHTML = "<input type='text' value='New Assignment " + assnum + "'>";
     		clonedRow.cells[1].childNodes[0].addEventListener("change", updateAssignments);
     		clonedRow.cells[2].childNodes[0].addEventListener("change", updateAssignments);
-    		table.insertBefore(clonedRow, lastRow);
+
+    		// table.insertBefore(clonedRow, lastRow);
     		updateAssignments();
     	}
 
