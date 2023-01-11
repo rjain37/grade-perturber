@@ -1,9 +1,7 @@
-<script>
+<script lang="ts">
   let rawtext = "";
   let categories = [];
   let grade = 0;
-  let b = document.getElementById("t");
-  let temp;
   $: grades = false;
 
   const returnNada = () => "";
@@ -204,7 +202,6 @@
     </div>
     <div>
       <textarea
-        type="text"
         rows="8"
         value={rawtext}
         id="entry"
