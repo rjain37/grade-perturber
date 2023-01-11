@@ -1,4 +1,6 @@
 <script lang="ts">
+  import CategoryComponent from "../components/Category.svelte";
+
   let rawtext = "";
   let categories = [];
   let grade = 0;
@@ -230,70 +232,7 @@
         Grade: {((grade * 10000) >> 0) / 100}%
       </h2>
       {#each categories as cat}
-        <table style="width: 90%" id="{cat.name}table">
-          <tr style="margin-bottom:0.5px">
-            <td />
-            <td style="text-align:right; font-weight:bold; width:25%"
-              >{cat.name}</td
-            >
-            <td style="text-align:left; width:25%"
-              ><input
-                class="inh"
-                value={cat.weight * 100}
-                type="number"
-                on:change={updateGrade}
-              /></td
-            >
-            <td style="text-align:right;" class="{cat.name}grade" />
-          </tr>
-          <tr>
-            <td style="text-align:left; font-weight:bold; width:25%"
-              >Assignment</td
-            >
-            <td style="text-align:center; font-weight:bold; width:25%"
-              >Points</td
-            >
-            <td style="text-align:center; font-weight:bold; width:25%"
-              >Out of</td
-            >
-            <td style="text-align:right; font-weight:bold; width:25%">Score</td>
-          </tr>
-          {#each cat.assignments as ass}
-            <tr>
-              <td style="text-align:left; width:25%" class="{ass.name}name"
-                ><input value={ass.name} type="text" /></td
-              >
-              <td style="text-align:center; width:25%"
-                ><input
-                  class="{cat.name}in"
-                  value={ass.score}
-                  type="number"
-                  on:change={updateAssignments}
-                /></td
-              >
-              <td style="text-align:center; width:25%"
-                ><input
-                  class="{cat.name}out"
-                  value={ass.outOf}
-                  type="number"
-                  on:change={updateAssignments}
-                /></td
-              >
-              <td style="text-align:right; width:25%" class="{cat.name}percent"
-                >{ass.percent}%</td
-              >
-            </tr>
-          {/each}
-          <tr>
-            <td
-              ><button
-                class="{cat.name}button"
-                on:click={addAssignment(cat.name)}>New Assignment</button
-              ></td
-            >
-          </tr>
-        </table>
-        <br />
+        <CategoryComponent name={cat.name} />
       {/each}
       {#if grades}
         {returnNada(updateCategoryGrades())}
