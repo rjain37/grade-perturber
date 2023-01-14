@@ -210,6 +210,11 @@
         placeholder="Copy and paste your assigments from PowerSchool!"
       />
       <br />
+      to view an example, see <a
+      href="https://gist.github.com/rjain37/cf138605e890fe6be9b8d25f648d7151"
+      target="_blank"
+      >here</a
+    >
       <table style="width: 90%">
         <tr style="margin-bottom:0.5px">
           <td />
@@ -220,10 +225,6 @@
           <td />
         </tr>
       </table>
-      to view an example, see<a
-        href="https://gist.github.com/rjain37/cf138605e890fe6be9b8d25f648d7151"
-        >here</a
-      >
       <br />
     </div>
 
@@ -244,14 +245,6 @@
 <style>
   textarea {
     width: 90%;
-  }
-
-  .inh {
-    color: inherit;
-    border-bottom: 0.5px solid white;
-    font-size: 16px;
-    min-width: none;
-    width: 50px;
   }
 
   td {

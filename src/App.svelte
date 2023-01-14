@@ -34,7 +34,6 @@
 		}
 		linestext.forEach(linetext => lines = [...lines, new Line(linetext)]);
 
-		// console.log(lines);
 		categories = [];
 
 		lines.forEach(ass => 
@@ -185,24 +184,52 @@
 				points += parseFloat(ass.score);
 				total += parseFloat(ass.outOf);
 			});
-			document.getElementsByClassName(categories[i].name + "grade")[0].innerHTML = "<strong>" + (Math.round((points/total) * 10000) / 100) + "%</strong>";
+			document.getElementsByClassName(categories[i].name + "grade")[0].innerHTML = "<h3>" + (Math.round((points/total) * 10000) / 100) + "%</h3>";
 		}
+	}
+
+	function removeAssignment(assName)
+	{
+		for(let i = 0; i < categories.length; i++)
+		{
+			for(let j = 0; j < categories[i].assignments.length; j++)
+			{
+				if(categories[i].assignments[j].name == assName)
+				{
+					categories[i].assignments.splice(j, 1);
+					document.getElementsByClassName(assName+"row")[0].remove();
+				}
+			}
+		}
+		updateAssignments();
+	}
+
+	function save()
+	{
+		let name = prompt("Enter class name");
+		console.log("s");
+	}
+
+	function loadClass()
+	{
+
+	}
+
+	function loadMenu()
+	{
+
+	}
+
+	function deleteClass()
+	{
+
 	}
 </script>
 
 <style>
 	textarea
 	{
-		width: 90%;
-	}
-
-	.inh
-	{
-		color: inherit;
-		border-bottom: 0.5px solid white;
-		font-size:16px;
-		min-width: none;
-		width: 50px;
+		width: 75%;
 	}
 
 	td
@@ -213,7 +240,23 @@
 	main
 	{
 		font-size: 14px;
+		line-height: 12px;
 	}
+
+	.cancel
+	{
+		color: red;
+	}
+	.cancel:hover
+	{
+		cursor: pointer;
+	}
+
+	input
+	{
+		height:30px;
+	}
+
 </style>
 
 <main>
@@ -221,47 +264,56 @@
 		<div>
 			<h1>Grade Perturber</h1>
 		</div>
-		<div>
+		<div id = "top">
 			<textarea type="text" rows="8" value={rawtext} id="entry" placeholder="Copy and paste your assigments from PowerSchool!"></textarea>
 			<br>
 			<table style = "width: 90%">
 				<tr style="margin-bottom:0.5px"> 
 					<td></td>
-					<td style="text-align:right; font-weight:bold; width:25%"><button on:click={load}>load</button></td>
-					<td style="width:25%"></td>
+					<td style="text-align:center; font-weight:bold;" colspan="2"><button on:click={load}>Load</button></td>
 					<td></td>
 				</tr>
 			</table>
 			to view an example, see <a href="https://gist.github.com/rjain37/cf138605e890fe6be9b8d25f648d7151">here</a>
-			<br>
+			<hr style="width:75%">
+			<input type="submit" value="Save" onclick={save()}>
+			<select id="loadMenu"><option value="" selected="" disabled="" hidden="">Choose here</option></select>
+			<input type="submit" value="Load" onclick={loadClass()}>
+			<input type="submit" value="Del" onclick={deleteClass()}>
 		</div>
 
 		<div id="t">
 			<h2 style="visibility:hidden;" id="finalgrade">Grade: {((grade * 10000) >> 0) / 100}%</h2>
 			{#each categories as cat}
-				<table style = "width: 90%" id = "{cat.name}table">
+				<table style = "width: 55%" id = "{cat.name}table">
 					<tr style="margin-bottom:0.5px"> 
-						<td></td>
-						<td style="text-align:right; font-weight:bold; width:25%">{cat.name}</td>
+						<td style="width:25%"></td>
+						<td style="text-align:right; font-weight:bold; width:25%"><h3>{cat.name}</h3></td>
 						<td style="text-align:left; width:25%"><input class = "inh" value = {cat.weight*100} type = "number" on:change={updateGrade}></td>
-						<td style="text-align:right;" class="{cat.name}grade"></td>
+						<td style="text-align:right; width:15%"></td>
+						<td style="text-align:right; width:10%" class="{cat.name}grade"></td>
 					</tr>
 					<tr>
-						<td style="text-align:left; font-weight:bold; width:25%">Assignment</td>
-						<td style="text-align:center; font-weight:bold; width:25%">Points</td>
-						<td style="text-align:center; font-weight:bold; width:25%">Out of</td>
-						<td style="text-align:right; font-weight:bold; width:25%">Score</td>
+						<td style="text-align:left; font-weight:bold; width:25%"><h4>Assignment</h4></td>
+						<td style="text-align:center; font-weight:bold; width:25%"><h4>Points</h4></td>
+						<td style="text-align:center; font-weight:bold; width:25%"><h4>Out of</h4></td>
+						<td style="text-align:center; font-weight:bold; width:15%"><h4>Score</h4></td>
+						<td style="text-align:right; font-weight:bold; widht:10%"><h4>Remove</h4></td>
 					</tr>
 					{#each cat.assignments as ass}
-						<tr>
+						<tr class="{ass.name}row">
 							<td style="text-align:left; width:25%" class="{ass.name}name"><input value = {ass.name} type="text"></td>
 							<td style="text-align:center; width:25%"><input class="{cat.name}in" value = {ass.score} type = "number" on:change={updateAssignments}></td>
 							<td style="text-align:center; width:25%"><input class="{cat.name}out" value = {ass.outOf} type = "number" on:change={updateAssignments}></td>
-							<td style="text-align:right; width:25%" class="{cat.name}percent">{ass.percent}%</td>
+							<td style="text-align:center; width:15%" class="{cat.name}percent">{ass.percent}%</td>
+							<!-- svelte-ignore a11y-click-events-have-key-events -->
+							<td style="text-align:right; width:10%" class ="cancel" on:click={removeAssignment(ass.name)}>x</td>
 						</tr>
 					{/each}
 					<tr>
-						<td><button class="{cat.name}button" on:click={addAssignment(cat.name)}>New Assignment</button></td>
+						<td></td>
+						<td style="text-align:center" colspan="2"><button class="{cat.name}button" on:click={addAssignment(cat.name)}>New Assignment</button></td>
+						<td></td>
 					</tr>
 				</table>
 				<br>
