@@ -38,6 +38,10 @@
 
 		lines.forEach(ass => 
 		{
+			if (ass.score == "--")
+			{
+				return;
+			}
 			if (cats.indexOf(ass.category)==-1)
 			{
 				let temparr = []
@@ -206,23 +210,46 @@
 
 	function save()
 	{
-		let name = prompt("Enter class name");
-		console.log("s");
+		var data = {
+			'assignments': categories,
+		};
+
+		var name = prompt("Enter class name");
+
+		localStorage.setItem(name, JSON.stringify(data));
 	}
 
 	function loadClass()
 	{
-
+		var name = menu.value;
+		var data = JSON.parse(localStorage.getItem(name));
+		categories = data.assignments;
+		loadMenu();
+		calcGrade();
+		document.getElementById("finalgrade").style.visibility = "visible";
 	}
 
 	function loadMenu()
 	{
+		let menu = document.getElementById('loadSelect');
+		menu.innerHTML = "<option value='' selected disabled hidden>Choose here</option>";
+		var saves = Object.keys(localStorage);
 
+		saves.forEach ((x) => {
+			var o = document.createElement("option");
+			o.value = x;
+			o.innerText = x;
+
+			menu.appendChild(o);
+		});
 	}
 
 	function deleteClass()
 	{
-
+		let menu = document.getElementById('loadSelect');
+		var name = menu.value;
+		localStorage.removeItem(name);
+		loadMenu();
 	}
 </script>
 
@@ -276,10 +303,23 @@
 			</table>
 			to view an example, see <a href="https://gist.github.com/rjain37/cf138605e890fe6be9b8d25f648d7151">here</a>
 			<hr style="width:75%">
-			<input type="submit" value="Save" onclick={save()}>
-			<select id="loadMenu"><option value="" selected="" disabled="" hidden="">Choose here</option></select>
-			<input type="submit" value="Load" onclick={loadClass()}>
-			<input type="submit" value="Del" onclick={deleteClass()}>
+			<button value="Save" on:click={save}>Save</button>
+			<select id="loadSelect"><option value="" selected="" disabled="" hidden="">Choose here</option></select>
+			<script>
+				let menu = document.getElementById('loadSelect');
+				menu.innerHTML = "<option value='' selected disabled hidden>Choose here</option>";
+				var saves = Object.keys(localStorage);
+
+				saves.forEach ((x) => {
+					var o = document.createElement("option");
+					o.value = x;
+					o.innerText = x;
+
+					menu.appendChild(o);
+				});
+			</script>
+			<button value="Load" on:click={loadClass}>Load</button>
+			<button value="Del" on:click={deleteClass}>Delete</button>
 		</div>
 
 		<div id="t">

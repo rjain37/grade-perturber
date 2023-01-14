@@ -73,24 +73,3 @@ function delSave () {
 }
 
 loadMenu()
-
-function addAssignment (name, date, category, points, possible, toEnd=true) {
-    var row;
-    if (toEnd)
-        row = assignments.insertRow(assignments.rows.length);
-    else
-        row = assignments.insertRow(1);
-    
-    if (isNaN(points))
-        points = "";
-
-    row.insertCell(0).innerText = name;
-    row.insertCell(1).innerText = date;
-    row.insertCell(2).innerText = category;
-    row.insertCell(3).innerHTML = "<input type='number' value='" + points + "' oninput='process()'>";;
-    row.insertCell(4).innerHTML = "<input type='number' value='" + possible + "' oninput='process()'>";;
-    row.insertCell(5).innerText = percent(points, possible);
-    row.insertCell(6).innerHTML = "<input type='button' value='Delete' onclick='deleteRow(this)'>";
-
-    process();
-}
