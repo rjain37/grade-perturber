@@ -110,6 +110,11 @@
 		categories.forEach(cat => {
 			let points = 0;
 			let total = 0;
+			
+			if (cat.assignments.length == 0)
+			{
+				return;
+			}
 
 			cat.assignments.forEach(ass => {
 				points += parseFloat(ass.score);
@@ -217,6 +222,7 @@
 		var name = prompt("Enter class name");
 
 		localStorage.setItem(name, JSON.stringify(data));
+		loadMenu();
 	}
 
 	function loadClass()
@@ -225,6 +231,7 @@
 		var data = JSON.parse(localStorage.getItem(name));
 		categories = data.assignments;
 		loadMenu();
+		grades = true;
 		calcGrade();
 		document.getElementById("finalgrade").style.visibility = "visible";
 	}
@@ -284,6 +291,16 @@
 		height:30px;
 	}
 
+	.border
+	{
+		border-style: solid;
+	}
+
+	.inh
+	{
+		width:50px;
+	}
+
 </style>
 
 <main>
@@ -323,31 +340,30 @@
 		</div>
 
 		<div id="t">
-			<h2 style="visibility:hidden;" id="finalgrade">Grade: {((grade * 10000) >> 0) / 100}%</h2>
+			<h2 style="visibility:hidden;" id="finalgrade">&nbsp; &nbsp; Grade: {((grade * 10000) >> 0) / 100}%</h2>
 			{#each categories as cat}
-				<table style = "width: 55%" id = "{cat.name}table">
-					<tr style="margin-bottom:0.5px"> 
+				<table style = "width: 55%" id = "{cat.name}table" class="border" CELLSPACING=0>
+					<tr style="margin-bottom:0.5px; background-color:#D3B5E5"> 
 						<td style="width:25%"></td>
-						<td style="text-align:right; font-weight:bold; width:25%"><h3>{cat.name}</h3></td>
-						<td style="text-align:left; width:25%"><input class = "inh" value = {cat.weight*100} type = "number" on:change={updateGrade}></td>
+						<td style="text-align:center; width:35%;" colspan="2"><h3 style="display:inline">{cat.name}</h3>&nbsp; <input class = "inh" value = {cat.weight*100} type = "number" on:change={updateGrade}></td>
 						<td style="text-align:right; width:15%"></td>
-						<td style="text-align:right; width:10%" class="{cat.name}grade"></td>
+						<td style="text-align:center; width:10%" class="{cat.name}grade"></td>
 					</tr>
 					<tr>
-						<td style="text-align:left; font-weight:bold; width:25%"><h4>Assignment</h4></td>
+						<td style="text-align:center; font-weight:bold; width:25%"><h4>Assignment</h4></td>
 						<td style="text-align:center; font-weight:bold; width:25%"><h4>Points</h4></td>
 						<td style="text-align:center; font-weight:bold; width:25%"><h4>Out of</h4></td>
 						<td style="text-align:center; font-weight:bold; width:15%"><h4>Score</h4></td>
-						<td style="text-align:right; font-weight:bold; widht:10%"><h4>Remove</h4></td>
+						<td style="text-align:center; font-weight:bold; widht:10%"><h4>Remove</h4></td>
 					</tr>
 					{#each cat.assignments as ass}
 						<tr class="{ass.name}row">
-							<td style="text-align:left; width:25%" class="{ass.name}name"><input value = {ass.name} type="text"></td>
+							<td style="text-align:center; width:25%" class="{ass.name}name"><input value = {ass.name} type="text"></td>
 							<td style="text-align:center; width:25%"><input class="{cat.name}in" value = {ass.score} type = "number" on:change={updateAssignments}></td>
 							<td style="text-align:center; width:25%"><input class="{cat.name}out" value = {ass.outOf} type = "number" on:change={updateAssignments}></td>
-							<td style="text-align:center; width:15%" class="{cat.name}percent">{ass.percent}%</td>
+							<td style="text-align:center; width:15%; padding-bottom: 8.5px;" class="{cat.name}percent">{ass.percent}%</td>
 							<!-- svelte-ignore a11y-click-events-have-key-events -->
-							<td style="text-align:right; width:10%" class ="cancel" on:click={removeAssignment(ass.name)}>x</td>
+							<td style="text-align:center; width:10%; padding-bottom: 8.5px;" class ="cancel" on:click={removeAssignment(ass.name)}>x</td>
 						</tr>
 					{/each}
 					<tr>
