@@ -172,7 +172,6 @@
 		clonedRow.cells[1].childNodes[0].addEventListener("change", updateAssignments);
 		clonedRow.cells[2].childNodes[0].addEventListener("change", updateAssignments);
 
-		// table.insertBefore(clonedRow, lastRow);
 		updateAssignments();
 	}
 
@@ -182,6 +181,7 @@
 		let assnum = numAssignments() + 1;
 		categories = [new Category("New Category " + catnum, 0, [new Line("", "New Assignment " + assnum, 0, 100, "New Category " + catnum)]), ...categories];
 		newcat[newcatidx] = true;
+		document.getElementById("finalgrade").style.visibility = "visible";
 	}
 
 	function updateCatIndex()
@@ -364,9 +364,11 @@
 			<p id = "addcat" style="position:relative; right: 24%;" on:click={addCategory}><strong>+ Add Category</strong></p>
 			{#each categories as cat}
 				<table style = "width: 55%" id = "{cat.name}table" class="border" CELLSPACING=0>
-					<tr style="margin-bottom:0.5px; background-color:#D3B5E5"> 
+					<tr style="margin-bottom:0.5px; background-color:#00b4df"> 
 						<td style="width:25%"></td>
-						<td style="text-align:center; width:35%;" colspan="2"><h3 style="display:inline">{cat.name}</h3>&nbsp; <input class = "inh" value = {cat.weight*100} type = "number" on:change={updateGrade}></td>
+						<td style="text-align:center; width:35%;" colspan="2"><input value = {cat.name} type="text" style = "background-color:#00b4df; outline: none; border-top-style: hidden; border-right-style: hidden; border-left-style: hidden; border-bottom-style: none; font-weight: bold; font-size: 16px; width: 160px">
+							<!-- <h3 style="display:inline">{cat.name}</h3> -->
+							&nbsp; <input class = "inh" value = {cat.weight*100} type = "number" on:change={updateGrade}></td>
 						<td style="text-align:right; width:15%"></td>
 						<td style="text-align:center; width:10%" class="{cat.name}grade"></td>
 					</tr>
@@ -384,7 +386,7 @@
 							<td style="text-align:center; width:25%"><input class="{cat.name}out" value = {ass.outOf} type = "number" on:change={updateAssignments}></td>
 							<td style="text-align:center; width:15%; padding-bottom: 8.5px;" class="{cat.name}percent">{ass.percent}%</td>
 							<!-- svelte-ignore a11y-click-events-have-key-events -->
-							<td style="text-align:center; width:10%; padding-bottom: 8.5px;" class ="cancel" on:click={removeAssignment(ass.name)}>x</td>
+							<td style="text-align:center; width:10%; padding-bottom: 8.5px;" class ="cancel"><button on:click={removeAssignment(ass.name)}>Remove</button></td>
 						</tr>
 					{/each}
 					<tr>

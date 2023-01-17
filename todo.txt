@@ -1,4 +1,2 @@
-option to add category
 rogerhub
 edge cases (idk yet)
-styling
