@@ -5,6 +5,8 @@
 	let b = document.getElementById('t');
 	let temp;
 	$: grades = false;
+	$: newcat = [false];
+	$: newcatidx = 0;
 
 	const returnNada = () => '';
 	const load = () => 
@@ -174,6 +176,19 @@
 		updateAssignments();
 	}
 
+	function addCategory()
+	{
+		let catnum = categories.length + 1;
+		let assnum = numAssignments() + 1;
+		categories = [new Category("New Category " + catnum, 0, [new Line("", "New Assignment " + assnum, 0, 100, "New Category " + catnum)]), ...categories];
+		newcat[newcatidx] = true;
+	}
+
+	function updateCatIndex()
+	{
+		newcatidx++;
+	}
+
 	function numAssignments()
 	{
 		let temp = 0;
@@ -301,6 +316,10 @@
 		width:50px;
 	}
 
+	#addcat:hover
+	{
+		cursor: pointer;
+	}
 </style>
 
 <main>
@@ -341,6 +360,8 @@
 
 		<div id="t">
 			<h2 style="visibility:hidden;" id="finalgrade">&nbsp; &nbsp; Grade: {((grade * 10000) >> 0) / 100}%</h2>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<p id = "addcat" style="position:relative; right: 24%;" on:click={addCategory}><strong>+ Add Category</strong></p>
 			{#each categories as cat}
 				<table style = "width: 55%" id = "{cat.name}table" class="border" CELLSPACING=0>
 					<tr style="margin-bottom:0.5px; background-color:#D3B5E5"> 
@@ -376,6 +397,10 @@
 			{/each}
 			{#if grades}
 				{returnNada(updateCategoryGrades())}
+			{/if}
+			{#if newcat[newcatidx]}
+				{returnNada(updateGrade())}
+				{returnNada(updateCatIndex())}
 			{/if}
 		</div>
 	</center>
