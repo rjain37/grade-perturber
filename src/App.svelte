@@ -337,7 +337,7 @@
 					<td></td>
 				</tr>
 			</table>
-			to view an example, see <a href="https://gist.github.com/rjain37/cf138605e890fe6be9b8d25f648d7151">here</a>
+			to view an example, see <a target="_blank" rel="noreferrer" href="https://gist.github.com/rjain37/cf138605e890fe6be9b8d25f648d7151">here</a>
 			<hr style="width:75%">
 			<button value="Save" on:click={save}>Save</button>
 			<select id="loadSelect"><option value="" selected="" disabled="" hidden="">Choose here</option></select>
